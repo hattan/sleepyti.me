@@ -18,6 +18,7 @@ URL: http://github.com/davidshaw/sleepyti.me/
 		<meta name="robots" content="index">
  		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
  		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+ 		<script src="js/vendor/handlebars-v1.3.0.js"></script>
 		<script src="js/app.js"></script>
 
 </head>
@@ -26,7 +27,66 @@ URL: http://github.com/davidshaw/sleepyti.me/
 		<font face="Garamond" size="5">
 			<center>Hello, and welcome to sleepyti.me. Sleepyti.me is a bedtime calculator that counts backwards in sleep cycles and tells you when to go to sleep so that you can wake up refreshed! This site is written in Javascript, which must be enabled in order to use the page. Thanks for visiting, and sorry for the inconvenience!
 	</noscript>
-	<div id="tit"></div>
+	<script id="form-template" type="text/x-handlebars-template">
+		<table>
+			<tr width="100%">
+				<td width="20%"></td>
+				<td>
+					<span class="intro">
+						<font face="Garamond" size=5>
+							I have to wake up at {{title}}
+							<span class="waketime" style="display:none;"></span>
+				</td>
+				<td>
+					<select id="hour">
+						<option>(hour)</option>
+						{{#each hours}}
+						<option>{{this}}</option>
+						{{/each}}
+					</select>
+				</td>
+				<td>
+					<select id="minute">
+					{{#each minutes}}
+					<option>{{this}}</option>
+					{{/each}}
+					</select>
+				</td>
+				<td>
+					<select id="ampm">
+						<option>AM</option>
+						<option>PM</option>
+					</select>
+				</td>
+			</tr>
+			<tr><td><hr color="white"></td></tr>
+			<tr valign=TOP>
+				<td></td>
+				<td align="center">
+					<span id="nowtop">
+					<hr color="white" width="25%">
+					<big>
+						<font color="#666666"><i>or, find out when to wake up<br/>
+					if you go to bed now</i>
+						</font></big>
+				</td>
+				<td align="center">
+					<hr color="white" width="25%">
+					<input type="button" value="zzz" id="sleepnow"/></span>
+				</td>
+				<td></td></span>
+				<td>
+			</tr>
+			<tr>
+				<span class="results" style="display:none;"></span>
+				</td>
+			</tr>
+		</table>
+	</script>
+
+	<div id="tit" class="hidden">
+		<font face="Garamond"><h1>&nbsp;&nbsp;<i>sleepyti.me <font color="lightblue">bedtime calculator</font></i></h1></font>
+	</div>
 	<div id="main"></div>
 	<div id="instant" style="display:none;"></div>
 	<div id="amazon" style="display:none;" align="center" valign="bottom">

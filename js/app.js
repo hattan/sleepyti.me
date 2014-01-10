@@ -1,42 +1,23 @@
-$(document).ready(function() {
+$(function() {
 	function ren() {
-		// render the page -- in case you're wondering, 
-		// nothing will work without javascript!
-		$("#tit").html('<font face="Garamond"><h1>&nbsp;&nbsp;<i>sleepyti.me <font color="lightblue">bedtime calculator</font></i></h1></font>');
-		var mrend = '';
-		mrend = mrend +
-		'<table><tr width="100%">' +
-		'<td width="20%"></td>' +
-		'<td><span class="intro"><font face="Garamond" size=5>I have to wake up at <span class="waketime" style="display:none;"></span>&nbsp;</td>' +
-		'<td>' +
-		'<select id="hour">' +
-		'<option>(hour)</option>';
-		
-		// populate our lists
+		$("#tit").show();
+		var hours=[],
+			minutes=[];
+
 		for(var h = 1; h <= 12; h++) {
-			mrend = mrend + '<option>' + h + '</option>';	
+			hours.push(h);	
 		}
-		
-		mrend = mrend + '</select></td><td><select id="minute"><option>(minute)</option>';
-		
+
 		for(var m = 0; m <= 55; m += 5) {
-			if(m < 10) {
-				mrend = mrend + '<option value="' + m + '">0' + m + '</option>';
-			}
-			else {
-				mrend = mrend + '<option>' + m + '</option>';
-			}
-			
+			minutes.push(m < 10 ? '0' + m : m);
 		}
-		
-		mrend = mrend + '</select></td><td><select id="ampm">' + 
-		'<option>AM</option><option>PM</option></select></td></tr>' +
-		'<tr><td><hr color="white"></td></tr>' +
-		'<tr valign=TOP><td></td><td align="center"><span id="nowtop"><hr color="white" width="25%"><big><font color="#666666"><i>or, find out when to wake up<br/>if you go to bed now</i></font></big></td><td align="center"><hr color="white" width="25%"><input type="button" value="zzz" id="sleepnow"/></span></td>' +
-		'<td></td></span>' +
-		'<td></tr><tr><span class="results" style="display:none;"></span></td>' + 
-		'</tr></table>';
-		$('#main').html(mrend);
+
+		var source = $("#form-template").html(),
+		 	template = Handlebars.compile(source),
+		 	context = {hours: hours,minutes: minutes},
+			html = template(context);
+
+		$('#main').html(html);	
 	}
 	ren();
 	
