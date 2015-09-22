@@ -1,10 +1,3 @@
-
-<!-----------------------------------------------------
-sleepyti.me bedtime calculator
-Author: David Shaw (dshaw dot jobs at gmail dot com)
-URL: http://github.com/davidshaw/sleepyti.me/
------------------------------------------------------->
-
 <html>
 <head>
 <title>sleepyti.me bedtime calculator</title>
@@ -60,7 +53,6 @@ $(document).ready(function() {
 		$('#amazon').fadeIn(2500);
 	}
 	
-	// calculates an hour and a half back
 	function sleepback(hr, min, an) {
                 var rmin = 0;
                 var rhr = 0;
@@ -89,9 +81,6 @@ $(document).ready(function() {
 		return r;
 	}
 	
-	// knockout takes a date object and returns a
-	// string with wake times!
-	// time + :14 + (multiples of 90 mins)
 	function knockout(rightnow) {
 		var r = ''; // return string
 		var hr = rightnow.getHours();
@@ -184,11 +173,8 @@ $(document).ready(function() {
 		r = r + '</h2></font><p>A good night\'s sleep consists of 5-6 complete sleep cycles.</p>';
 		return r;
 	}
-
 	
-	// handle "sleep now" requests
-	// this currently fades out the #main id,
-	// and works in a totally separate div
+	
 	$("#sleepnow").click(function() {
 		var st = '';
 		var answ = ''; // this is the text we return
@@ -321,28 +307,9 @@ $(document).ready(function() {
 <div id="instant" style="display:none;"></div>
 <div id="amazon" style="display:none;" align="center" valign="bottom">
 <br/><br/><hr color="#CCCCCC" width="30%"><font face="Garamond" size=5 color="#666666"><i>Sleepyti.me is provided as a free service thanks to support from our ads.<br/><br/>
-
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-7082199327067068";
-/* sleepy */
-google_ad_slot = "4113086282";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
 <br/><a href="http://sleepyti.me"><center><h3>back</h3></center></a>
 
 </div>
-<div id="fb">
-<hr color="white">
-<hr color="white">
-<hr color="white">
-<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fsleepyti.me&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
 
-</div>
 </body>
 </html>
